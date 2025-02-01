@@ -11,7 +11,7 @@ class Database {
     private static ?self $instance = null;
     private PDO $connection;
 
-    public static __construct() {
+    public function __construct() {
         try {
             $this->connection = new PDO(
                 "mysql:host=" . $_ENV['DB_HOST'] .
@@ -26,7 +26,7 @@ class Database {
     }
 
     public static function getInstance(): self {
-        if (self:$instance == null) {
+        if (self::$instance == null) {
             self::$instance = new self();
         }
 
