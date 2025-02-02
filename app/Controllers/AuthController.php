@@ -18,7 +18,7 @@ class AuthController extends Controller {
         $this->view('auth/login');
     }
 
-    public function reigsterForm(): void {
+    public function registerForm(): void {
         $this->view('auth/register');
     }
 

@@ -7,7 +7,12 @@ namespace App\Core;
 abstract class Controller {
     protected function view(string $name, array $data = []): void {
         extract($data);
-        require_once __DIR__ . "/../Views/{$name.php}";
+
+        ob_start();
+        require_once __DIR__ . "/../Views/{$name}.php";
+        $content = ob_get_clean();
+
+        require_once __DIR__ . "/../Views/layouts/main.php";
     }
 
     protected function redirect(string $url): void {

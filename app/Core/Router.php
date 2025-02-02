@@ -21,7 +21,7 @@ class Router {
         if (isset($this->routes[$method][$path])) {
             [$controller, $action] = $this->routes[$method][$path];
             $controller = new $controller();
-            $controller->action();
+            $controller->$action();
             return;
         }
 
