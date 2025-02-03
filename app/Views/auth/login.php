@@ -1,4 +1,4 @@
 <?php
 $title = 'Login';
 
-echo 'Login page';
+echo 'Login page'; ?>
