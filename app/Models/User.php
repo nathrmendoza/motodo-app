@@ -14,14 +14,15 @@ class User {
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function create(string $email, string $password): bool {
+    public function create(string $email, string $name, string $password): bool {
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
         $stmt = $this->db->prepare(
-            "INSERT INTO users (email, password) VALUES (:email, :password)"
+            "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)"
         );
 
         return $stmt->execute([
+            'name' => $name,
             'email' => $email,
             'password' => $hash
         ]);

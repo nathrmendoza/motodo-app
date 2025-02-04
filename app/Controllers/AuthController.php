@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_type=1);
 
 namespace App\Controllers;
@@ -29,6 +28,7 @@ class AuthController extends Controller {
         }
 
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        $name = $_POST['name'] ?? false;
         $password = $_POST['password'] ?? '';
 
 
@@ -37,7 +37,12 @@ class AuthController extends Controller {
             return;
         }
 
-        if ($this->userModel->create($email, $password)) {
+        if (!$name) {
+            $this->view('auth/register', ['error' => 'Invalid input, name is required']);
+            return;
+        }
+
+        if ($this->userModel->create($email, $name, $password)) {
             $this->redirect('/login');
         } else {
             $this->view('auth/register', ['error' => 'Registration failed']);
