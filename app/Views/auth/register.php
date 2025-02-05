@@ -2,7 +2,7 @@
 $title = 'Register'; ?>
 <section class="register-form">
     <div class="page-container">
-        <form action="/register" method="POST" class="reg-form-sequence">
+        <form action="/register" method="POST" id="userRegisterForm" class="reg-form-sequence">
             <div class="panel-1">
                 <h3>Hello, how should we call you?</h3>
                 <input type="text" name="name" id="form_user_name" placeholder="Enter your name here...">
@@ -22,7 +22,7 @@ $title = 'Register'; ?>
                     </li>
                     <li>
                         <label for="form_user_confirm_password">Confirm Password:</label>
-                        <input type="password" name="password" id="form_user_confirm_password">
+                        <input type="password" name="confirm_password" id="form_user_confirm_password">
                     </li>
                     <li>
                         <input type="submit" value="SUBMIT" class="btn-primary">
